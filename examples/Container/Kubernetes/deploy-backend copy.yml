@@ -16,21 +16,16 @@ spec:
         service: backend
     spec:
       containers:
-        - name: backend
-          image: isaias66/backend:v3
-          # imagePullPolicy: Never
+          name: backend
+          image: jp.icr.io/ira-tok/backend:v1
           resources:
             limits:
               cpu: 1
-              memory: 4G
-            requests:
-              cpu: 1
-              memory: 4G
+              memory: "2G"
           ports:
-            - containerPort: 50051
-              protocol: TCP
+            containerPort: 80
           env:
-            - name: ASPNETCORE_URLS
+              name: ASPNETCORE_URLS
               value: http://+:80
 ---
 apiVersion: v1

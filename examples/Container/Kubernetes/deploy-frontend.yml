@@ -17,12 +17,15 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: docker.io/grpc-dotnet/container-frontend:latest
+          image: docker.io/isaias66/frontend:v4
           imagePullPolicy: Never
           resources:
             limits:
-              cpu: "1"
-              memory: "200Mi"
+              cpu: 1
+              memory: 4G
+            requests:
+              cpu: 1
+              memory: 4G
           ports:
             - containerPort: 80
               protocol: TCP
@@ -40,11 +43,11 @@ metadata:
     app: grpc-dotnet-container
     service: frontend
 spec:
-  type: NodePort
+  # type: NodePort
   ports:
     - port: 3200
       targetPort: 80
       protocol: TCP
-      nodePort: 30008
+      # nodePort: 30008
   selector:
     service: frontend
