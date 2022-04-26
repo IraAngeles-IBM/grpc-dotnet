@@ -4,12 +4,12 @@ WORKDIR /app
 # Copy everything
 COPY . ./
 RUN dotnet --info
-RUN dotnet restore examples/Container/Backend
-RUN dotnet publish examples/Container/Backend -c Release -o out
+RUN dotnet restore examples/Greeter/Server
+RUN dotnet publish examples/Greeter/Server -c Release -o out
 # RUN dotnet publish --no-restore examples/Container/Backend -c Release -o out
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "Backend.dll"]
+ENTRYPOINT ["dotnet", "Client.dll"]

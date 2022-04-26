@@ -17,11 +17,11 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: docker.io/grpc-dotnet/container-frontend:latest
-          imagePullPolicy: Never
+          image: jp.icr.io/ira-tok/frontend:v2
+          # imagePullPolicy: Never
           resources:
             limits:
-              cpu: "1"
+              cpu: "0.1"
               memory: "200Mi"
           ports:
             - containerPort: 80
