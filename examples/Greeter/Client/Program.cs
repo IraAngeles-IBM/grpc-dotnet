@@ -27,10 +27,10 @@ namespace Client
     {
         static async Task Main(string[] args)
         {
-            using var channel = GrpcChannel.ForAddress("http://server.myum6f5wtpf.svc.cluster.local:80");
+            using var channel = GrpcChannel.ForAddress("http://172.30.133.31:50051");
             var client = new Greeter.GreeterClient(channel);
 
-            var reply = await client.SayHelloAsync(new HelloRequest { Name = "GreeterClient" });
+            var reply = await client.SayHelloAsync(new HelloRequest { Name = "GreeterClient-ira" });
             Console.WriteLine("Greeting: " + reply.Message);
 
             Console.WriteLine("Shutting down");

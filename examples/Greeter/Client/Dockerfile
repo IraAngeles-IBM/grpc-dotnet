@@ -4,8 +4,8 @@ WORKDIR /app
 # Copy everything
 COPY . ./
 RUN dotnet --info
-RUN dotnet restore examples/Greeter/Server
-RUN dotnet publish examples/Greeter/Server -c Release -o out
+RUN dotnet restore examples/Greeter/Client
+RUN dotnet publish examples/Greeter/Client -c Release -o out
 # RUN dotnet publish --no-restore examples/Container/Backend -c Release -o out
 
 # Build runtime image
