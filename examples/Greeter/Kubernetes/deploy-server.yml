@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: isaias66/server:v1
+          image: isaias66/server:v2
           # imagePullPolicy: Never
           resources:
             limits:
@@ -32,6 +32,8 @@ spec:
           env:
             - name: ASPNETCORE_URLS
               value: http://+:80
+          command: [ "/bin/bash", "-c", "--" ]
+          args: [ "while true; do sleep 30; done;" ]
 ---
 apiVersion: v1
 kind: Service

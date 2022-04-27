@@ -17,8 +17,8 @@ spec:
     spec:
       containers:
         - name: client
-          image: isaias66/client:v1
-          imagePullPolicy: Never
+          image: isaias66/client:v5
+          # imagePullPolicy: Never
           resources:
             limits:
               cpu: 1
@@ -27,13 +27,15 @@ spec:
               cpu: 1
               memory: 4G
           ports:
-            - containerPort: 80
+            - containerPort: 50051
               protocol: TCP
           env:
             - name: ASPNETCORE_URLS
               value: http://+:80
             - name: BackendUrl
               value: dns:///backend.default.svc.cluster.local
+          command: [ "/bin/bash", "-c", "--" ]
+          args: [ "while true; do sleep 30; done;" ]
 ---
 apiVersion: v1
 kind: Service
