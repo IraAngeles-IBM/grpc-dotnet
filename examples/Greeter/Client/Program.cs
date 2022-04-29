@@ -27,7 +27,8 @@ namespace Client
     {
         static async Task Main(string[] args)
         {
-            using var channel = GrpcChannel.ForAddress("http://172.30.133.31:50051");
+            Console.WriteLine("Starting app - ira");
+            using var channel = GrpcChannel.ForAddress("http://172.30.133.45:50051");
             var client = new Greeter.GreeterClient(channel);
 
             var reply = await client.SayHelloAsync(new HelloRequest { Name = "GreeterClient-ira" });

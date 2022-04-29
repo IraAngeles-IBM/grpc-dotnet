@@ -16,8 +16,14 @@
 
 #endregion
 
+using System.Net;
+using Microsoft.AspNetCore.Connections;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Hosting;
+
+// using Microsoft.AspNetCore.Hosting;
+// using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace Server
@@ -37,7 +43,16 @@ namespace Server
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.ConfigureKestrel(options =>
+                    {
+                        options.Listen(IPAddress.Any, 50051, listenOptions =>
+                        {
+                            listenOptions.Protocols = HttpProtocols.Http2;
+                            // listenOptions.UseConnectionLogging();
+                        });
+                    });
                     webBuilder.UseStartup<Startup>();
+                    // webBuilder.UseUrls("http://0.0.0.0:50051");
                 });
     }
 }

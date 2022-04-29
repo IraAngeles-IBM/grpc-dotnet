@@ -9,7 +9,7 @@ RUN dotnet publish examples/Greeter/Server -c Release -o out
 # RUN dotnet publish --no-restore examples/Container/Backend -c Release -o out
 
 # Build runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
-WORKDIR /app
-COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "Server.dll"]
+# FROM mcr.microsoft.com/dotnet/aspnet:6.0
+# WORKDIR /app
+# COPY --from=build-env /app/out .
+# ENTRYPOINT ["dotnet", "Server.dll"]

@@ -42,7 +42,7 @@ namespace Server
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<WeatherService>().RequireHost("*:50051");
+                endpoints.MapGrpcService<WeatherService>();
             });
         }
     }
